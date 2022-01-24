@@ -19,16 +19,51 @@
     <link rel="stylesheet" type="text/css" href="assets/styles/styles.css" />
   </head>
   <body>
+    <!-- Header here -->
     <header>
-      <!-- Header here -->
+      <div class="row bg-dark text-light text-center justify-content-center">
+        <div class="col">
+          <a
+            class="text-light"
+            href="https://www.github.com/meshtatsuo"
+            target="_blank"
+          >
+            <p>Created by Dominic Misasi</p>
+          </a>
+        </div>
+      </div>
     </header>
-
+    <!-- Jumbotron -->
     <section>
-      <!-- Jumbotron -->
+      <div
+        class="row border-bottom py-2 border-5 border-dark d-flex justify-content-center text-center"
+      >
+        <div class="col">
+          <h1>Work Day Scheduler</h1>
+          <h4>A simple calendar app for scheduling your work day.</h4>
+          <p class="time">Placeholder Time</p>
+        </div>
+      </div>
     </section>
 
-    <section>
+    <section class="container">
       <!-- Content Section. The rows for the scheduler goes here -->
+      <!-- Test Row. These will be dynamically generated on load -->
+      <ul class="list">
+        <li
+          class="row item align-items-center text-light border-bottom border-1 border-light"
+        >
+          <div class="fill timeSlot p-2 col-1 text-dark text-end rounded-start">
+            <p>time</p>
+          </div>
+          <div class="fill taskSlot p-2 col-10">
+            <p>task</p>
+          </div>
+          <div class="fill saveSlot p-2 col-1 fill rounded-end">
+            <img src="assets/images/floppy-disk-solid.png" alt="save icon" />
+          </div>
+        </li>
+      </ul>
     </section>
 
     <footer>
@@ -49,5 +84,6 @@
     ></script>
 
     <!-- Link local JS file here  -->
+    <script src="assets/js/script.js"></script>
   </body>
 </html>

@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+header a {
+  text-decoration: none;
+  color: white;
+}
+
+header p {
+  font-size: 12px;
+  margin: 0;
+  padding: 0.3em 0;
+  min-height: 100%;
+}
+
+.item {
+  min-height: 4em;
+  max-height: 5em;
+}
+
+.fill {
+  margin: 0;
+  padding: 0;
+  min-height: 4em;
+  max-height: 5em;
+}
+
+.timeSlot {
+  background-color: #dddddd;
+}
+
+.taskSlot {
+  background-color: #888888;
+}
+.taskSlot:hover {
+  background-color: #999999;
+}
+
+.saveSlot {
+  padding: 0;
+  background-color: #194c86;
+  text-align: center;
+  align-items: center;
+}
+.saveSlot:hover {
+  background-color: #245b9b;
+}
+
+.saveSlot img {
+  transform: scale(1);
+  max-width: 25%;
+  height: auto;
+}

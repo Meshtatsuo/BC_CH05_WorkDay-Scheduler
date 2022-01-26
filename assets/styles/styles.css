@@ -3,6 +3,11 @@
   padding: 0;
 }
 
+p {
+  margin: 0;
+  padding: 0;
+}
+
 header a {
   text-decoration: none;
   color: white;
@@ -16,15 +21,15 @@ header p {
 }
 
 .item {
-  min-height: 4em;
-  max-height: 5em;
+  min-height: 5em;
+  max-height: 5.5em;
 }
 
 .fill {
   margin: 0;
   padding: 0;
-  min-height: 4em;
-  max-height: 5em;
+  min-height: 5em;
+  max-height: 5.5em;
 }
 
 .timeSlot {

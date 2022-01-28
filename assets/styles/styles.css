@@ -1,6 +1,9 @@
+/* GENERAL STYLES */
 * {
   margin: 0;
   padding: 0;
+  font-family: "Comforter", cursive;
+  font-family: "Quattrocento Sans", sans-serif;
 }
 
 p {
@@ -8,6 +11,7 @@ p {
   padding: 0;
 }
 
+/* HEADER STYLES */
 header a {
   text-decoration: none;
   color: white;
@@ -20,6 +24,7 @@ header p {
   min-height: 100%;
 }
 
+/* TASK LIST STYLES */
 .item {
   min-height: 5em;
   max-height: 5.5em;
@@ -34,13 +39,6 @@ header p {
 
 .timeSlot {
   background-color: #dddddd;
-}
-
-.taskSlot {
-  background-color: #888888;
-}
-.taskSlot:hover {
-  background-color: #999999;
 }
 
 .saveSlot {
@@ -62,7 +60,7 @@ header p {
 .task-text {
   font-size: 18px;
   color: white;
-  font-weight: 500;
+  font-weight: bold;
 }
 
 .text-input {
@@ -70,8 +68,54 @@ header p {
   width: 100%;
   height: 100%;
   color: white;
-  font-weight: 500;
-  background-color: #888888;
+  font-weight: bold;
+  /* transparent background so it doesn't mess with my time
+  based background setup */
+  background-color: rgba(0, 0, 0, 0);
   border: none;
   text-decoration: none;
+}
+
+/* BACKGROUND COLOR MODIFIER STYLES */
+.isAfter {
+  background-color: #888888;
+}
+.isAfter:hover {
+  background-color: #999999;
+}
+.isNow {
+  background-color: #993333;
+}
+
+.isNow:hover {
+  background-color: #aa4444;
+}
+.isBefore {
+  background-color: #338833;
+}
+.isBefore:hover {
+  background-color: #449944;
+}
+
+/* media queries for minor changes on small screens */
+
+@media (max-width: 748px) {
+  .timeSlot p {
+    font-size: 10px;
+  }
+  .task-text {
+    font-size: 12px;
+  }
+
+  .item {
+    min-height: 3em;
+    max-height: 4em;
+  }
+
+  .fill {
+    margin: 0;
+    padding: 0;
+    min-height: 3em;
+    max-height: 4em;
+  }
 }

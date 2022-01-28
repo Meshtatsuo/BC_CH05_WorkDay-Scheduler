@@ -1,8 +1,12 @@
+// TASK MANAGEMENT SYSTEM
+// Note:
+// Task is updated when the text area loses focus,
+// this means the save button doesn't *actually* do
+// anything, but is still a guaranteed way for the user
+// to click out of the text area and trigger the update.
+
 // FUNCTIONS
 // variables to use to set workday schedule.
-// if time is left I will add an option to
-// allow you to set your own workday
-// (based on 24 hour schedule)
 var startingHour = 9;
 var endingHour = 17;
 var taskContainer = $(".list");
@@ -93,12 +97,14 @@ const updateText = function (target) {
   console.log(text);
   let newTask = $("<div>")
     .addClass("fill taskSlot px-2 col-10 d-flex align-items-center")
+    .attr("id", taskID)
     .html(
       "<p class='task-text px-3 d-flex align-items-center justify-content-center'>" +
         text +
         "</p>"
     );
   $(this).replaceWith(newTask);
+  auditTimeSlots();
   saveTaskData(taskID, text);
 };
 

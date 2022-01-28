@@ -6,6 +6,7 @@
 var startingHour = 9;
 var endingHour = 17;
 var taskContainer = $(".list");
+var selectedTask = $(".taskSlot");
 
 // Generate each list item for the tasks based starting and ending hour
 const generateListItems = function (startingHour, EndingHour) {
@@ -42,6 +43,9 @@ const generateListItems = function (startingHour, EndingHour) {
     let listItemEl = $("<li>").addClass(liClasses);
     let timeAreaEl = $("<div>").addClass(timeSlotClasses);
     let taskAreaEl = $("<div>").addClass(taskSlotClasses + hour);
+    let taskTextEl = $("<p>").addClass(
+      "task-text px-3 d-flex align-items-center justify-content-center"
+    );
     let saveAreaEl = $("<div>").addClass(saveSlotClasses);
     // add ID of the task and save elements to match the time
     // slot for future tracking
@@ -49,21 +53,76 @@ const generateListItems = function (startingHour, EndingHour) {
     saveAreaEl.attr("id", "hour-" + hour);
     // Create text content for items
     // Set time element, checking for before or after 12pm.
-    debugger;
     if (!afternoon) {
       timeAreaEl.html("<p>" + hour + "  AM </p>");
     } else {
       timeAreaEl.html("<p>" + hour + "  PM </p>");
     }
+
+    // Load in task info if any exist
+    let storedTaskInfo = loadTaskData("hour-" + hour);
+    if (storedTaskInfo === "" || !storedTaskInfo) {
+    } else {
+      taskTextEl.text(storedTaskInfo);
+    }
+    // Set save icon on save button
     saveAreaEl.html("<img src='assets/images/floppy-disk-solid.png' />");
 
     listItemEl.append(timeAreaEl);
+    taskAreaEl.append(taskTextEl);
     listItemEl.append(taskAreaEl);
     listItemEl.append(saveAreaEl);
     taskContainer.append(listItemEl);
   }
 };
 
+const saveTaskData = function (taskID, newTask) {
+  localStorage.setItem(taskID, newTask);
+};
+
+const loadTaskData = function (taskID) {
+  return localStorage.getItem(taskID);
+};
+
+const updateText = function (target) {
+  // get neccessary variables for modification and saving
+  console.log("yes");
+  let text = $(this).find("textarea").val();
+  let taskID = $(this).attr("id");
+  console.log(taskID);
+  console.log(text);
+  let newTask = $("<div>")
+    .addClass("fill taskSlot px-2 col-10 d-flex align-items-center")
+    .html(
+      "<p class='task-text px-3 d-flex align-items-center justify-content-center'>" +
+        text +
+        "</p>"
+    );
+  $(this).replaceWith(newTask);
+  saveTaskData(taskID, text);
+};
+
+const editText = function (target) {
+  let text = $(this).find("p").html();
+  let taskID = $(this).attr("id");
+  console.log(taskID);
+  let textInput = $("<textarea>")
+    .addClass("text-input col-10 px-2 d-flex align-items-center")
+    .attr("name", "task")
+    .attr("id", taskID)
+    .attr("rows", 2)
+    .attr("maxlength", 100)
+    .val(text);
+  $(this).find("p").replaceWith(textInput);
+  textInput.trigger("focus");
+};
+
 let listEl = $(".list");
 console.log(listEl);
 generateListItems(startingHour, endingHour);
+
+// enable editing of task on click
+taskContainer.on("click", ".taskSlot", editText);
+
+// validate, update, and save task
+taskContainer.on("focusout", ".taskSlot", updateText);

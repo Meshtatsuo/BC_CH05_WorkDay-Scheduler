@@ -14,7 +14,6 @@ var selectedTask = $(".taskSlot");
 
 // Generate each list item for the tasks based starting and ending hour
 const generateListItems = function (startingHour, EndingHour) {
-
   // Set classes for main divs beforehand. Makes it easy to tweak later
   let liClasses =
     "row item align-items-center text-light border-bottom border-1 border-light";
@@ -81,10 +80,12 @@ const generateListItems = function (startingHour, EndingHour) {
 };
 
 const saveTaskData = function (taskID, newTask) {
+  // saves new task data to its taskID
   localStorage.setItem(taskID, newTask);
 };
 
 const loadTaskData = function (taskID) {
+  // loads data of taskID from local storage
   return localStorage.getItem(taskID);
 };
 
@@ -109,6 +110,7 @@ const updateText = function (target) {
 };
 
 const editText = function (target) {
+  // replaces the <p> element with a <textarea> for editing
   let text = $(this).find("p").html();
   let taskID = $(this).attr("id");
   console.log(taskID);
@@ -118,7 +120,7 @@ const editText = function (target) {
     .attr("id", taskID)
     .attr("rows", 2)
     .attr("maxlength", 100)
-    .val(text);
+    .text(text);
   $(this).find("p").replaceWith(textInput);
   textInput.trigger("focus");
 };

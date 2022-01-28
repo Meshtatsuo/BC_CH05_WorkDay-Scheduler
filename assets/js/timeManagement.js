@@ -1,8 +1,8 @@
 // GLOBALS
 var selectedTask = $(".taskSlot");
 var currentTime = "";
-// FUNCTIONS
 
+// FUNCTIONS
 const updateTime = function () {
   let dateTime = $(".time");
   // Use momentJS to update current time

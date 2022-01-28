@@ -14,8 +14,8 @@ var selectedTask = $(".taskSlot");
 
 // Generate each list item for the tasks based starting and ending hour
 const generateListItems = function (startingHour, EndingHour) {
-  // Set classes for main divs beforehand. Makes it easy to tweak later
 
+  // Set classes for main divs beforehand. Makes it easy to tweak later
   let liClasses =
     "row item align-items-center text-light border-bottom border-1 border-light";
   let timeSlotClasses =
